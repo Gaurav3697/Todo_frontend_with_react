@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from '../main';
 
 const Profile = () => {
-  const{isAuthenticated,loading,user} = useContext(Context);
-
+  const { user } = useContext(Context);
   return (
     <>
      {/* user information will be shown only untill user has logged in */}

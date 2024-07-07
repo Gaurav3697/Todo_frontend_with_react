@@ -5,6 +5,7 @@ import "./styles/app.scss";
 import { createContext } from "react";
 
 export const server = "https://nodeapi-tm6d.onrender.com/api/v1"; 
+// export const server = "http://localhost:4000/api/v1"; 
 
 export const Context = createContext({ isAuthenticated: false });
 

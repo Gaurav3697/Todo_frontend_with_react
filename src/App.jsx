@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Context, server } from "./main";
 import { useContext } from "react";
+import NotFound from "./pages/NotFound";
 
 // npm run dev ---> to start deveolpment
 
@@ -42,6 +43,7 @@ function App() {
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="*" element={<NotFound/>}/>
     </Routes> 
     <Toaster/>
    </Router>

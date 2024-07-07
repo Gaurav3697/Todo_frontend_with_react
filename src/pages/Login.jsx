@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, Navigate } from "react-router-dom";
 import { Context, server } from "../main";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
-    useContext(Context);
+  const { isAuthenticated, setIsAuthenticated } =useContext(Context);
+  const [loading,setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,10 +39,11 @@ const Login = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/"} />;
+   if (isAuthenticated) return <Navigate to={"/"} />;
 
   return (
     <div className="login">
+        <h1>Login</h1>
       <section>
         <form onSubmit={submitHandler}>
           <input

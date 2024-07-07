@@ -41,6 +41,7 @@ const Register = () => {
   if(isAuthenticated) return <Navigate to={"/"}/>
   return (
     <div className="login">
+      <h1>Register</h1>
       <section>
         <form onSubmit={submitHandler}>
           <input

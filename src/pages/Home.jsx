@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { server } from "../main";
+import { Context, server } from "../main";
 import axios from "axios";
 import Todo from "../components/Todo";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   // const {setLoading,loading} = useContext(Context) //instead of doing this create a new loading and set loading since it is loading for user and if it will be changed header loader will also change which will cause bad bahaviour of the webpage
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ const Home = () => {
           headers: {
             "Content-Tpe": "application/json",
           },
-          withCredentials: true, //write terms in write spelling -->dont write withCredential
+          withCredentials: true, //write terms in right spelling -->dont write withCredential
         }
       );
       toast.success(data.message);
@@ -59,7 +62,12 @@ const Home = () => {
       .catch((e) => {
         console.log(e.response.data.message);
       });
-  }, [refresh]);
+
+    if (!isAuthenticated)
+      {
+        navigate("/login")
+      } 
+  }, [refresh, isAuthenticated]);
 
   return (
     <>

@@ -1,15 +1,23 @@
-.login > section {
+.login {
+  >h1{
+    text-align: center;
+    text-transform: uppercase;
+    margin:10px 0;
+  }
+
+  >section {
     @include container(900px, unset, 2rem);
     min-height: 80%;
     background-color: $color2;
-    > form {
+
+    >form {
       @include flexBox(column, center, flex-start, 2rem);
       @include inputs;
-  
+
       button {
         @include styledText(0.9rem);
         @include myButton(18.75rem, 1rem);
       }
     }
   }
-  
+}

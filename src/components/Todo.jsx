@@ -14,6 +14,7 @@ const Todo = ({id, title, description, IsCompleted, createdAt,updateHandler,dele
       <button className="btn" onClick={()=>{deleteHandler(id)}}>DELETE</button>
     </div>
      </div>
+     
 
   );
 };

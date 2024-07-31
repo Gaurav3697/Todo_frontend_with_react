@@ -1,26 +1,143 @@
-.header {
-    background-color: $color3;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    width: 100%; 
-    > div {
-      h2 {
-        text-transform: uppercase;
-        color: $color2;
-        font-weight: 400;
-      }
-    }
-  
-    > article {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      > a {
-        @include styledText;
-        @include myButton;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+nav {
+  position: relative;
+  display: inline-flex;
+  margin: 0;
+  padding: 10px;
+  background: #000;
+  width: 100vw;
+  height: 4rem;
+
+  span {
+    background: transparent;
+    font-size: 26px;
+    color: #fff;
+    font-weight: bold;
+    z-index: 20;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 50px;
+
+    li {
+      display: inline-block;
+      margin: 2px 15px;
+      padding: 4px;
+      color: wheat;
+
+      // background: red;
+      a {
+        cursor: pointer;
+        color: white;
+
+        &:hover {
+          color: rgb(160, 131, 77);
+        }
       }
     }
   }
-  
+
+}
+
+nav .headerbutton {
+  @include myButton(10rem, 0.8rem, $color3, $color2, 10px);
+  position: absolute;
+  top: 10px;
+  right: 25px;
+}
+
+.shape {
+  z-index: 10;
+  width: 20%;
+  height: 20vh;
+  background: linear-gradient(to bottom, #ce0000, #7A0800 70%);
+  position: absolute;
+  -webkit-clip-path: ellipse(110px 100px at 20% 10%);
+}
+
+@media (max-width: 450px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      background: transparent;
+      font-size: 20px;
+      color: #fff;
+      font-weight: bold;
+      z-index: 20;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 5px;
+
+      li {
+        display: inline-block;
+        margin: 2px 5px;
+        padding: 4px;
+        color: wheat;
+
+        // background: red;
+        a {
+          cursor: pointer;
+          color: white;
+
+          &:hover {
+            color: rgb(160, 131, 77);
+          }
+        }
+      }
+    }
+
+    .headerbutton {
+      width: 7rem;
+      padding: 0.8rem 1.4rem;
+      background-color: rgb(51, 51, 51);
+      border: 1px solid rgb(51, 51, 51);
+      color: rgb(255, 255, 255);
+      text-transform: uppercase;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-radius: 10px;
+      position: absolute;
+      top: 10px;
+      right: 7px;
+    }
+  }
+
+  .shape {
+    z-index: 10;
+    width: 54%;
+    height: 20vh;
+    background: linear-gradient(to bottom, #ce0000, #7A0800 70%);
+    position: absolute;
+    -webkit-clip-path: ellipse(70px 75px at 20% 15%);
+  }
+}
+
+
+
+
+@media (max-width: 650px) {
+  nav {
+    ul {
+      list-style: none;
+      margin-left: 15px;
+
+
+    }
+  }
+
+  .shape {
+    z-index: 10;
+    width: 54%;
+    height: 20vh;
+    background: linear-gradient(to bottom, #ce0000, #7A0800 70%);
+    position: absolute;
+    -webkit-clip-path: ellipse(70px 86px at 20% 15%)
+  }
+
+}

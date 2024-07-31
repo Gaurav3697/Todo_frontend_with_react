@@ -1,14 +1,23 @@
 .login {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to bottom,#000f16,#002a36,#014f64);
+  // background: #000f16;
   >h1{
+    @include styledText(2rem);
+    color: aliceblue;
     text-align: center;
     text-transform: uppercase;
-    margin:10px 0;
+    margin: 2rem;
   }
 
   >section {
+    // margin: 2rem;
+    background-image: url("/bg.jpg");
     @include container(900px, unset, 2rem);
     min-height: 80%;
     background-color: $color2;
+    box-shadow: 15px 10px 10px #002a36;
 
     >form {
       @include flexBox(column, center, flex-start, 2rem);

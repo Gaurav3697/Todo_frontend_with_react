@@ -1,29 +1,47 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../main';
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 
-
 const Profile = () => {
-  const { user } = useContext(Context);
-  const { isAuthenticated } = useContext(Context);
+  const { user, isAuthenticated } = useContext(Context);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(!isAuthenticated){
+    if (!isAuthenticated) {
       navigate("/login");
+    } else {
+      setLoading(false);
     }
-  }, [isAuthenticated])
-  
+  }, [isAuthenticated, navigate]);
+
+  if (loading || !user) {
+    return <span>Loading...</span>;
+  }
+
   return (
-    <>
-     {/* user information will be shown only untill user has logged in */}
-    <h1 align='center'>UserId:{user._id}</h1>
-    <h3 align='center'>UserName:{user.name}</h3>
-    <h3 align='center'>Email:{user.email}</h3>
-    <h3 align='center'>CreatedAt:{user.createdAt}</h3>
-    </>
-  )
+    <main className="cd__main">
+      <div className="profile-page">
+        <div className="content">
+          <div className="content__title">
+            <h1>{user.name}</h1><span>Email: {user.email}</span>
+          </div>
+          <div className="content__description">
+            <p>CreatedAt: {user.createdAt}</p>
+          </div>
+        </div>
+        <div className="bg">
+          <div>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div className="theme-switcher-wrapper" id="theme-switcher-wrapper">
+          <span>Themes color</span>
+        </div>
+      </div>
+    </main>
+  );
 }
 
-export default Profile 
+export default Profile;

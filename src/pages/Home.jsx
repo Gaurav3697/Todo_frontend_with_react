@@ -2,8 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Context, server } from "../main";
 import axios from "axios";
-import Todo from "../components/Todo";
 import { useNavigate } from "react-router-dom";
+
+const TodoCard = ({ id, title, description, IsCompleted, createdAt, updateHandler, deleteHandler }) => {
+  return (
+    <div className="card">
+      <p className="createdAt">{createdAt}</p>
+      <p className="title">{title}</p>
+      <p className="text">{description}</p>
+      <div className="manipulator">
+        <input type="checkbox" onChange={() => { updateHandler(id) }} checked={IsCompleted} id="checkBox" />
+        <button className="btn" onClick={() => { deleteHandler(id) }}>DELETE</button>
+      </div>
+    </div>
+  )
+}
+
+
+
 
 const Home = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -63,15 +79,15 @@ const Home = () => {
         console.log(e.response.data.message);
       });
 
-    if (!isAuthenticated)
-      {
-        navigate("/login")
-      } 
+    if (!isAuthenticated) {
+      navigate("/login")
+    }
   }, [refresh, isAuthenticated]);
 
   return (
     <>
       <div className="login">
+        <h1>Create Task</h1>
         <section>
           <form onSubmit={submitHandler}>
             <input
@@ -90,28 +106,29 @@ const Home = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
             <button disabled={loading} type="submit">
-              Create Task
+              Create
             </button>
           </form>
         </section>
-      </div>
-      <hr />
 
-      <div>
         <h1 align="center">YOUR TASKS</h1>
-        {tasks.map((i) => (
-          <Todo
-            key={i._id}
-            id={i._id}
-            title={i.title}
-            description={i.description}
-            IsCompleted={i.isCompleted}
-            createdAt={i.createdAt}
-            updateHandler={updateHandler}
-            deleteHandler={deleteHandler}
-          />
-        ))}
+        <div className="content">
+          {tasks.map((i) => (
+            <TodoCard
+              key={i._id}
+              id={i._id}
+              title={i.title}
+              description={i.description}
+              IsCompleted={i.isCompleted}
+              createdAt={i.createdAt}
+              updateHandler={updateHandler}
+              deleteHandler={deleteHandler}
+            />
+          ))}
+        </div>
+
       </div>
+
     </>
   );
 };

@@ -6,13 +6,14 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
 }
 
 @import "features";
 @import "header";
 @import "login";
-@import "mediaquery";
 @import "todo";
+@import "profile.scss";
 
 a {
   text-decoration: none;
@@ -21,6 +22,7 @@ a {
 
 .home {
   text-align: center;
+  
   .heading {
     @include styledText(2rem, 100, uppercase);
     padding-top: 10vmax;
@@ -30,11 +32,7 @@ a {
     margin: 2rem 0;
     font-weight: 900;
   }
-}
-.todosContainer {
-  @include flexBox(column, center, flex-start);
-  @include fill;
-  @include container(900px, unset, 3rem 0);
+  
 }
 
 .todo {
@@ -51,6 +49,7 @@ a {
   input {
     width: 2rem;
     height: 2rem;
+    border-radius: 10px;
   }
 }
 
@@ -64,10 +63,16 @@ a {
 
 .btn {
   @include styledText;
-  @include myButton;
+  // @include myButton(10rem,0.5rem,white,rgb(31, 28, 28));
+  @include myButton();
 }
 .container {
   @include defaultStyle;
   padding: 5rem 2rem;
   background-color: $color4;
+}
+
+.todoPage{
+  background-image: url("/bg.jpg");
+  height: auto;
 }

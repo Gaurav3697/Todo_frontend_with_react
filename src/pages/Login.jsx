@@ -7,8 +7,8 @@ import { Context, server } from "../main";
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } =useContext(Context);
   const [loading,setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("gm4063420@gmail.com");
+  const [password, setPassword] = useState("password");
   const navigate = useNavigate();
 
   //making submit handler for login

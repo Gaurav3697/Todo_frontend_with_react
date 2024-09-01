@@ -13,8 +13,11 @@ const Profile = () => {
       navigate("/login");
     } else {
       setLoading(false);
+      if (user) {
+        toast.success(`${user.name} is logged in`);
+      }
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, user]);
 
   if (loading || !user) {
     return <span>Loading...</span>;
@@ -28,7 +31,7 @@ const Profile = () => {
             <h1>{user.name}</h1><span>Email: {user.email}</span>
           </div>
           <div className="content__description">
-            <p>CreatedAt: {user.createdAt}</p>
+            <p>CreatedAt: {new Date(user.createdAt).toLocaleDateString()}</p>
           </div>
         </div>
         <div className="bg">

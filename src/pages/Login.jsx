@@ -42,7 +42,7 @@ const Login = () => {
 
    useEffect(() => {
      if(isAuthenticated){
-      navigate("/profile")
+      navigate("/")
      }
    }, [isAuthenticated])
    

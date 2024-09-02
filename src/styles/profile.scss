@@ -1,33 +1,32 @@
 
   .profile-page {
     display: flex;
-    height: auto;
     padding-top: 5rem;
     margin-top: 10rem;
   }
+  
   @media (max-width: 990px) {
     .profile-page {
       padding-top: 0;
     }
   }
+  
   .profile-page .content {
     display: flex;
     flex-direction: column;
     max-width: 800px;
-    width: 100%;
     position: relative;
     z-index: 2;
     margin: auto;
     padding: 2rem;
-    background: #fff;
-    border-radius: 2rem;
+    background: #ffffff;
+    border-radius: 5rem;
     box-shadow: 0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07);
   }
   @media (max-width: 990px) {
     .profile-page .content {
       max-width: 420px;
       padding: 0;
-      border-radius: 0;
     }
   }
   .profile-page .content__title {

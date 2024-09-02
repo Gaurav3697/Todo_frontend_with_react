@@ -9,20 +9,20 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated === false) {
       navigate("/login");
-    } else {
+    } 
+    if(user){
       setLoading(false);
-      if (user) {
-        toast.success(`${user.name} is logged in`);
-      }
+      toast.success(user.name , " is logged in");
     }
-  }, [isAuthenticated, navigate, user]);
+  }, [isAuthenticated, user, navigate]);
 
-  if (loading || !user) {
-    return <span>Loading...</span>;
-  }
-
+    // Handle loading state or undefined user
+    if (!user) {
+      setLoading(true);
+    }
+  
   return (
     <main className="cd__main">
       <div className="profile-page">
